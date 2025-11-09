@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="mi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TRM | Whatitiri – Te Taura Whakamātau Reanga 4 (v4)</title>
+
+  <!-- Hidden/Proprietary Metadata -->
+  <meta name="application-name" content="Te Reo Makitaunu (TRM) Assessment – Whatitiri Reanga 4 v4" />
+  <meta name="trm:copyright" content="© 2019–2025 Taimona Panapa. All rights reserved." />
+  <meta name="trm:programme" content="Te Reo Makitaunu (TRM)" />
+  <meta name="trm:reanga" content="4" />
+  <meta name="trm:embedding" content="Optimised for Systeme.io iframe" />
+  <meta name="trm:report" content="Landscape printable PDF via window.print()" />
+
+  <style>
+    :root{
+      --ink:#0b1021;--muted:#616b7a;--brand:#0ea5e9;--accent:#22c55e;--bg:#f7fafc;--card:#ffffff;--ring:#e5e7eb;
+      --trm-red:#b91c1c;--trm-black:#000;--trm-blue:#0ea5e9;--row:#f1f5f9;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg)}
+    header{background:#fff;border-bottom:1px solid var(--ring)}
+    .wrap{max-width:1140px;margin:0 auto;padding:1.1rem}
+    h1{font-size:1.25rem;margin:0 0 .25rem;font-weight:800;color:var(--trm-blue)}
+    .sub{color:var(--muted);font-size:.95rem;margin:0}
+    .grid{display:grid;gap:1rem;grid-template-columns:1.1fr .9fr;align-items:start;margin-top:1rem}
+    .card{background:var(--card);border:1px solid var(--ring);border-radius:1rem;padding:1rem;box-shadow:0 1px 0 rgba(2,8,20,.04)}
+    .card h2{margin:.25rem 0 1rem;font-size:1.1rem}
+    .muted{color:var(--muted)}
+    .section{border-top:1px dashed var(--ring);padding-top:1rem;margin-top:1rem}
+    .q{margin:.75rem 0;padding:.75rem;border:1px solid var(--ring);border-radius:.75rem;background:#fff}
+    .q h4{margin:.25rem 0 .5rem}
+    .opts{display:grid;gap:.5rem}
+    .opt{display:flex;gap:.5rem;align-items:flex-start}
+    .opt input{margin-top:.2rem}
+    .hl{background:#f1f5f9;border:1px solid var(--ring);border-radius:.5rem;padding:.6rem .8rem}
+    .score{position:sticky;top:1rem}
+    .score table{width:100%;border-collapse:collapse}
+    .score th,.score td{border-bottom:1px solid var(--ring);padding:.45rem .25rem;text-align:left;font-size:.95rem}
+    .score tfoot td{font-weight:800}
+    .kicker{font-size:.9rem;color:var(--muted);margin:.25rem 0 .75rem}
+    .controls{border-top:1px solid var(--ring);margin-top:1rem;padding-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+    button{border:1px solid var(--ring);background:#fff;border-radius:.75rem;padding:.62rem .9rem;cursor:pointer;font-weight:700}
+    button.primary{background:var(--brand);color:#fff;border-color:transparent}
+    button.success{background:var(--accent);color:#063014;border-color:transparent}
+    button.ghost{background:#fff}
+    .pill{border:1px solid var(--ring);border-radius:999px;padding:.25rem .7rem;font-size:.85rem}
+    .file{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .75rem;background:#fff;border:1px dashed var(--ring);border-radius:.75rem}
+    input[type=file]{display:none}
+    .name-row{display:flex;gap:.75rem;align-items:center;background:#fff;border:1px solid var(--ring);border-radius:.75rem;padding:.75rem}
+    .name-row input{flex:1;border:1px solid var(--ring);border-radius:.5rem;padding:.6rem .7rem}
+    footer{margin-top:2rem;padding:1rem;border-top:1px solid var(--ring);color:var(--muted);font-size:.9rem;text-align:center}
+
+    /* Report styling to match Tūwhiri.pdf aesthetic */
+    .report-shell{position:relative}
+    .report-head{display:flex;gap:1rem;align-items:center;margin-bottom:.75rem}
+    .report-head img{height:60px;object-fit:contain}
+    .report-titles{display:flex;flex-direction:column}
+    .report-titles .t1{font-weight:900;font-size:1.2rem;letter-spacing:.2px;color:var(--trm-black)}
+    .report-titles .t2{font-weight:600;font-size:.95rem;color:var(--trm-blue)}
+    .report-meta{margin-top:.25rem;color:#334155;font-size:.92rem}
+    .report-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e2e8f0;border-radius:.75rem;overflow:hidden}
+    .report-table thead th{padding:.6rem;border-bottom:1px solid #e2e8f0;color:#fff;background:linear-gradient(90deg,var(--trm-red),#7f1d1d)}
+    .report-table tbody td{padding:.55rem;border-bottom:1px solid #e2e8f0;background:#fff}
+    .report-table tbody tr:nth-child(odd) td{background:#fafafa}
+    .report-table tfoot td{padding:.6rem;font-weight:800;background:#fff;border-top:2px solid #e2e8f0}
+    .notes{margin-top:.6rem;color:#334155;font-size:.92rem}
+    .legal{margin-top:.6rem;color:#334155;font-size:.85rem}
+
+    /* Watermark image by file name (only in print) */
+    #wmLogo{display:none}
+    @page{size:A4 landscape;margin:12mm}
+    @media print{
+      header,.no-print,.controls{display:none!important}
+      body{background:#fff}
+      .grid{grid-template-columns:1fr}
+      .card{box-shadow:none;border:0;padding:0}
+      .q{break-inside:avoid}
+      #wmLogo{display:block;position:fixed;bottom:10mm;right:12mm;opacity:.08;width:10%;z-index:0}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Whatitiri – Te Taura Whakamātau Reanga 4 (v4)</h1>
+      <p class="sub">Kaihanga Aromatawai TRM | TRM Assessment (bilingual, single-file, printable).</p>
+    </div>
+  </header>
+
+  <main class="wrap grid">
+    <section class="card" id="assessment">
+      <h2>Ngā Pātai | Questions</h2>
+
+      <!-- Learner name -->
+      <div class="name-row no-print">
+        <label for="learnerName"><strong>Ko wai tō ingoa? / What is your name?</strong></label>
+        <input id="learnerName" type="text" placeholder="Tāuru ingoa / Enter your name" />
+        <span class="pill" id="langPill">Reo: MI + EN</span>
+      </div>
+
+      <div id="sections"></div>
+
+      <!-- Controls moved to bottom -->
+      <div class="controls no-print">
+        <label class="file"><input id="logo" type="file" accept="image/*" />🖼️ Logo (PNG/SVG/JPG)</label>
+        <button id="randomise" class="ghost">🔀 Arotārite | Randomise</button>
+        <button id="mark" class="success">✅ Aromatawai | Mark</button>
+        <button id="pdf" class="ghost">🖨️ Hanga Pūrongo PDF | Generate PDF</button>
+        <button class="ghost" data-lang="both">MI + EN</button>
+        <button class="ghost" data-lang="mi">MI</button>
+        <button class="ghost" data-lang="en">EN</button>
+      </div>
+    </section>
+
+    <aside class="card score">
+      <h2>Ngā Kaute Wāhanga | Section Scores</h2>
+      <div class="kicker">Kaute MCQ ā-taunoa. Ko ngā whakautu poto he “Arotake ā-kaiako”.</div>
+      <table id="scoreTable">
+        <thead><tr><th>Wāhanga | Section</th><th>MCQ ✓</th><th>MCQ ✗</th><th>MCQ /</th><th>SA (pending)</th></tr></thead>
+        <tbody></tbody>
+        <tfoot><tr><td>Katoa | Total</td><td id="totalCorrect">0</td><td id="totalIncorrect">0</td><td id="totalMax">0</td><td id="totalSA">0</td></tr></tfoot>
+      </table>
+    </aside>
+  </main>
+
+  <section class="wrap card" style="margin-top:1rem">
+    <h2>Pūrongo | Report (Preview)</h2>
+    <div id="report" class="hl report-shell" aria-live="polite">
+      <!-- Header logo for screen preview; replaced/kept on print -->
+      <img id="wmLogo" src="trm_logo.png" alt="TRM watermark" />
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div><strong>© 2019–2025 Taimona Panapa. All rights reserved.</strong></div>
+      <div>He atanga reo-rua kua hangaia mō te hōtaka <em>Te Reo Makitaunu (TRM)</em>. | Bilingual interface designed for the TRM Programme.</div>
+    </div>
+  </footer>
+
+  <script>
+  // ---------- Embedded Data (same questions as v3; amended earlier) ----------
+  const ASSESSMENT = {
+    sections: {
+      "1": {
+        name: "Wāhanga 1 – Kupu Tū | Word Classes (Extension)",
+        questions: [
+          {type:"mcq", prompt:"Which word class names an event or action?", options:["Tūāhua","Tūmahi","Tūingoa","Tūpou"], answer:"Tūmahi"},
+          {type:"mcq", prompt:"Which word class describes the quality of something?", options:["Tūāhua","Tūmahi","Tūingoa","Tūpou"], answer:"Tūāhua"},
+          {type:"sa", prompt:"Give one example of a Tūmahi and translate it."},
+          {type:"sa", prompt:"Explain the function of Tūāhua in a sentence."},
+          {type:"sa", prompt:"Write a sentence using both Tūingoa and Tūpou together."}
+        ]
+      },
+      "2": {
+        name: "Wāhanga 2 – Kupu Pū | Function Words (Extension)",
+        questions: [
+          {type:"mcq", prompt:"Which function word begins a sentence?", options:["Pūtimata","Pūtohu","Pūwhea","Tūpou"], answer:"Pūtimata"},
+          {type:"sa", prompt:"Explain what a Pūtohu does in a sentence."},
+          {type:"sa", prompt:"Give an example of a Pūwhea question."},
+          {type:"sa", prompt:"Write one sentence showing a Pūtimata in use."}
+        ]
+      },
+      "3": {
+        name: "Wāhanga 3 – Kuputake Kete 4",
+        questions: [
+          {type:"mcq", prompt:"What does 'pūkeke' mean?", options:["determined","lazy","quiet","angry"], answer:"determined"},
+          {type:"mcq", prompt:"Translate 'māro'.", options:["hard (touch)","soft (touch)","light","heavy"], answer:"hard (touch)"},
+          {type:"mcq", prompt:"What does 'ngohengohe' mean?", options:["soft (touch)","hard (touch)","difficult","strong"], answer:"soft (touch)"},
+          {type:"mcq", prompt:"Translate 'māmā'.", options:["light","heavy","tired","strong"], answer:"light"},
+          {type:"mcq", prompt:"Translate 'taumaha'.", options:["heavy","light","soft","quick"], answer:"heavy"},
+          {type:"mcq", prompt:"Translate 'oma'.", options:["to run","to jump","to sit","to open"], answer:"to run"},
+          {type:"mcq", prompt:"Translate 'peke'.", options:["to jump","to walk","to sleep","to shout"], answer:"to jump"},
+          {type:"mcq", prompt:"Translate 'kōrero'.", options:["to speak","to listen","to sleep","to swim"], answer:"to speak"},
+          {type:"mcq", prompt:"Translate 'ui'.", options:["to inquire (ask)","to shout","to write","to think"], answer:"to inquire (ask)"},
+          {type:"mcq", prompt:"Translate 'oti'.", options:["to be completed","to begin","to open","to stop"], answer:"to be completed"},
+          {type:"mcq", prompt:"Translate 'tinana'.", options:["the body","the head","the leg","the arm"], answer:"the body"},
+          {type:"mcq", prompt:"Translate 'kakī'.", options:["the neck","the shoulder","the chest","the hip"], answer:"the neck"},
+          {type:"mcq", prompt:"Translate 'maroke'.", options:["dry","wet","tired","warm"], answer:"dry"},
+          {type:"mcq", prompt:"Translate 'mākū'.", options:["wet","dry","cold","fat"], answer:"wet"},
+          {type:"mcq", prompt:"Translate 'waewae'.", options:["the legs","the arms","the shoulders","the feet"], answer:"the legs"},
+          {type:"sa",  prompt:"Write a sentence using one kupu from Kuputake Kete 4."}
+        ]
+      },
+      "4": {
+        name: "Wāhanga 4 – Pūwhea | Locational Particles (nei/na/ra)",
+        questions: [
+          {type:"mcq", prompt:"Which particle refers to something near the speaker?", options:["nei","na","ra","mua"], answer:"nei"},
+          {type:"mcq", prompt:"Which refers to something near the listener?", options:["nei","na","ra","tēnei"], answer:"na"},
+          {type:"mcq", prompt:"Which refers to something far from both?", options:["nei","na","ra","tēra"], answer:"ra"},
+          {type:"sa", prompt:"Write three examples showing nei, na, and ra."}
+        ]
+      },
+      "5": {
+        name: "Wāhanga 5 – Pīwhea | Locational Suffixes (tēnei → wēra)",
+        questions: [
+          {type:"mcq", prompt:"Translate 'tēnei'.", options:["this (near speaker)","that (near listener)","that (over there)","those"], answer:"this (near speaker)"},
+          {type:"mcq", prompt:"Translate 'tēra'.", options:["that (over there)","this","those","these"], answer:"that (over there)"},
+          {type:"mcq", prompt:"Translate 'ēnei'.", options:["these (near speaker)","those","that","it"], answer:"these (near speaker)"},
+          {type:"sa", prompt:"Use tēnei, tēra, and ēnei in one sentence each."}
+        ]
+      },
+      "6": {
+        name: "Wāhanga 6 – Hanga Rerenga | Sentence Structure",
+        questions: [
+          {type:"mcq", prompt:"Which begins a sentence identifying someone?", options:["Ko","He","Ka","Kei"], answer:"Ko"},
+          {type:"mcq", prompt:"What does 'He mahana te wai.' mean?", options:["The water is warm","The water is cold","The water is bright","It is raining"], answer:"The water is warm"},
+          {type:"mcq", prompt:"What does 'Ka oma te wahine nei.' mean?", options:["The woman here will run","The woman here will eat","The woman here will sing","The woman here will sleep"], answer:"The woman here will run"},
+          {type:"sa", prompt:"Write a 'Ko … te …' sentence introducing a person."},
+          {type:"sa", prompt:"Write a 'Ka …' sentence describing an action."}
+        ]
+      },
+      "7": {
+        name: "Wāhanga 7 – Ngā Tau | Numbers (0–734)",
+        questions: [
+          {type:"mcq", prompt:"What is 'rua tekau mā tahi'?", options:["21","22","11","12"], answer:"21"},
+          {type:"mcq", prompt:"Translate 'ono tekau mā iwa'.", options:["69","59","79","60"], answer:"69"},
+          {type:"mcq", prompt:"Translate 'toru rau whitu tekau mā rua'.", options:["372","273","327","237"], answer:"372"},
+          {type:"sa", prompt:"Write any three numbers between 400 and 734 in Māori."}
+        ]
+      },
+      "8": {
+        name: "Wāhanga 8 – E Hia / Tokohia | Counting Forms",
+        questions: [
+          {type:"mcq", prompt:"“E hia ngā waka?” asks about what?", options:["things","people","places","actions"], answer:"things"},
+          {type:"mcq", prompt:"“Tokohia ngā kōtiro?” asks about what?", options:["people","objects","animals","times"], answer:"people"},
+          {type:"mcq", prompt:"Which uses 'tokohia' correctly?", options:["Tokohia ngā tāne i te rōpū nei?","E hia ngā tāne i te rōpū nei?","Tokohia te rākau?","E hia te tangata?"], answer:"Tokohia ngā tāne i te rōpū nei?"},
+          {type:"sa", prompt:"Write one 'E hia' question and one 'Tokohia' question of your own."}
+        ]
+      },
+      "9": {
+        name: "Wāhanga 9 – Reo Pāngarau | Mathematical Language",
+        questions: [
+          {type:"mcq", prompt:"Translate 'tāpiri'.", options:["add","subtract","multiply","divide"], answer:"add"},
+          {type:"mcq", prompt:"Translate 'pirara'.", options:["divide","subtract","add","multiply"], answer:"divide"},
+          {type:"mcq", prompt:"Translate 'whakarea'.", options:["multiply","divide","subtract","equal"], answer:"multiply"},
+          {type:"sa", prompt:"Translate this equation into Māori: 6 + 5 = 11."},
+          {type:"sa", prompt:"Write a math sentence using 'tāpiri' and 'pirara'."}
+        ]
+      },
+      "10": {
+        name: "Wāhanga 10 – Huringa Reo | Translation Exercise",
+        questions: [
+          {type:"sa", prompt:"Translate the following paragraph into English:\nKo Mere tēnei. He kōtiro ia. He pakari ia. Ka mahi ia. Ka tiro ia. Ka tū tēra maunga. Ko Hiwiroa. He pūkeke tēnei kōtiro."}
+        ]
+      }
+    }
+  };
+
+  // ---------- Helpers ----------
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const state = { lang:'both', answers:{}, key:{}, sections:[], logoData:null, name:'' };
+
+  function t(mi,en){ if(state.lang==='mi') return mi; if(state.lang==='en') return en; return mi + " / " + en; }
+  function shuffle(arr){ const a=[...arr]; for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+  function band(p){
+    if(p>=85) return "Exceeding (Kauru)";
+    if(p>=70) return "Proficient (Tumu)";
+    if(p>=50) return "Developing (Pū)";
+    return "Emerging (Paiaka)";
+  }
+
+  // ---------- Build UI ----------
+  function buildUI(){
+    const container = $('#sections'); container.innerHTML = ''; state.sections = []; state.answers={}; state.key={};
+    Object.keys(ASSESSMENT.sections).forEach((sid, sIdx)=>{
+      const s = ASSESSMENT.sections[sid];
+      const secEl = document.createElement('div'); secEl.className='section';
+      const h3 = document.createElement('h3'); h3.textContent = s.name; secEl.appendChild(h3);
+
+      s.questions.forEach((q, qi)=>{
+        const qId = `s${sIdx}q${qi}`;
+        const qEl = document.createElement('div'); qEl.className='q';
+        const h4 = document.createElement('h4'); h4.textContent = q.prompt; qEl.appendChild(h4);
+
+        if(q.type==='mcq'){
+          const opts = shuffle(q.options);
+          const optsEl = document.createElement('div'); optsEl.className='opts';
+          opts.forEach((opt, i)=>{
+            const row = document.createElement('label'); row.className='opt';
+            const input = document.createElement('input'); input.type='radio'; input.name=qId; input.value=opt;
+            input.addEventListener('change',()=>{ state.answers[qId]=input.value; });
+            const span = document.createElement('span'); span.textContent = opt;
+            row.appendChild(input); row.appendChild(span); optsEl.appendChild(row);
+          });
+          qEl.appendChild(optsEl);
+          state.key[qId] = String(q.answer);
+        } else {
+          const ta = document.createElement('textarea'); ta.rows=3; ta.style.width='100%'; ta.placeholder = t("Tō whakautu poto ki konei…","Your short answer here…");
+          ta.addEventListener('input', ()=>{ state.answers[qId]=ta.value; });
+          qEl.appendChild(ta);
+          state.key[qId] = null; // SA pending review
+        }
+        secEl.appendChild(qEl);
+      });
+
+      container.appendChild(secEl);
+      const mcqCount = s.questions.filter(q=>q.type==='mcq').length;
+      const saCount  = s.questions.filter(q=>q.type==='sa').length;
+      state.sections.push({ title:s.name, mcq:mcqCount, sa:saCount });
+    });
+    updateScoreTable();
+    $('#report').innerHTML = '<div class="muted">'+t("Kua rite te aromatawai – whakamahia te pātene 'Aromatawai'.","Assessment ready – use the 'Mark' button.")+'</div>';
+  }
+
+  function updateScoreTable(results){
+    const tbody = $('#scoreTable tbody'); tbody.innerHTML=''; let total=0, max=0, saPending=0, incorrect=0;
+    state.sections.forEach((sec, i)=>{
+      const correct = results?.bySection?.[i] ?? 0;
+      const outOf = sec.mcq; const pending = sec.sa;
+      const wrong = outOf - correct;
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${sec.title}</td><td>${correct}</td><td>${wrong}</td><td>${outOf}</td><td>${pending}</td>`;
+      tbody.appendChild(tr);
+      total += correct; max += outOf; saPending += pending; incorrect += wrong;
+    });
+    $('#totalCorrect').textContent = total; $('#totalIncorrect').textContent = incorrect; $('#totalMax').textContent = max; $('#totalSA').textContent = saPending;
+  }
+
+  // ---------- Build TRM-style report ----------
+  function buildReport(bySection){
+    const now = new Date();
+    const nz = now.toLocaleString('en-NZ', {hour12:false});
+    const name = ($('#learnerName').value || '').trim() || t('Kāore anō kia whakaurua te ingoa','No name entered');
+
+    // Accumulate totals
+    let total=0, max=0; const rows=[]; let totalSA=0;
+    state.sections.forEach((s,i)=>{
+      const mcq = s.mcq; const ok = bySection[i]||0; const wrong = mcq - ok;
+      const pct = mcq? Math.round((ok/mcq)*100):0;
+      total += ok; max += mcq; totalSA += s.sa||0;
+      rows.push(`<tr>
+        <td>${s.title}</td>
+        <td>${mcq}</td>
+        <td>✓ ${ok}</td>
+        <td>✗ ${wrong}</td>
+        <td>${pct}%</td>
+        <td>${band(pct)}</td>
+      </tr>`);
+    });
+    const pctTotal = max? Math.round((total/max)*100):0;
+
+    const headerLogo = state.logoData ? `<img src="${state.logoData}" alt="TRM logo" />` : `<img src="trm_logo.png" alt="TRM logo" />`;
+
+    const html = `
+      <div class="report-head">
+        ${headerLogo}
+        <div class="report-titles">
+          <div class="t1">Pūrongo Whakamātau – Whatitiri Reanga 4</div>
+          <div class="t2">Te Reo Makitaunu Programme – Assessment Report</div>
+          <div class="report-meta">${t('Ingoa','Name')}: <b>${name}</b> • ${t('Rā','Date')}: <b>${nz}</b></div>
+        </div>
+      </div>
+      <table class="report-table">
+        <thead><tr>
+          <th>${t('Wāhanga','Section')}</th>
+          <th>${t('Pātai','Questions')}</th>
+          <th>${t('Tika ✓','Correct ✓')}</th>
+          <th>${t('Hē ✗','Incorrect ✗')}</th>
+          <th>${t('Ōrau %','Percent %')}</th>
+          <th>${t('Taumata Reo','Language Level')}</th>
+        </tr></thead>
+        <tbody>${rows.join('')}</tbody>
+        <tfoot><tr>
+          <td><b>${t('Katoa','Total')}</b></td>
+          <td><b>${max}</b></td>
+          <td><b>✓ ${total}</b></td>
+          <td><b>✗ ${max-total}</b></td>
+          <td><b>${pctTotal}% – ${band(pctTotal)}</b></td>
+          <td></td>
+        </tr></tfoot>
+      </table>
+      <div class="notes">
+        🗒️ ${t('Ngā MCQ kua tāutuhia aunoa. Ngā whakautu poto me arotake ā-kaiako.','MCQs are auto-marked. Short answers require teacher review.')}<br/>
+        ${t('He pūrongo ā-āhua whenua.','Landscape report layout.')} ${totalSA? '• '+t('Ngā SA e tatari ana:','SA pending:')+' <b>'+totalSA+'</b>' : ''}
+      </div>
+      <div class="legal">© 2019–2025 Taimona Panapa. All rights reserved. • ${t('He atanga reo-rua mō te hōtaka Te Reo Makitaunu (TRM).','Bilingual interface for the Te Reo Makitaunu (TRM) Programme.')}</div>
+    `;
+    return html;
+  }
+
+  // ---------- Marking ----------
+  function markAll(){
+    const bySection = {}; let sIdx=-1; let total=0, max=0;
+    $$('#sections .section').forEach((secEl)=>{
+      sIdx++; let correct=0; let count=0;
+      $$('.q', secEl).forEach((qEl, qi)=>{
+        const qId = `s${sIdx}q${qi}`;
+        const expected = state.key[qId];
+        const sel = $$('input[type=radio]:checked', qEl)[0];
+        if(expected!==null){ // MCQ
+          count++;
+          if(sel && String(sel.value).trim()===String(expected).trim()) correct++;
+        }
+      });
+      bySection[sIdx]=correct; total+=correct; max+=count;
+    });
+
+    updateScoreTable({bySection});
+
+    // Render TRM-style report
+    const rpt = $('#report');
+    rpt.innerHTML = buildReport(bySection);
+
+    // attach header logo preview if uploaded already (handled in buildReport)
+    rpt.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // ---------- PDF ----------
+  function generatePDF(){
+    $('#report').scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(()=>window.print(), 350);
+  }
+
+  // ---------- Randomise ----------
+  function randomiseOptions(){
+    $$('#sections .q .opts').forEach(opts=>{
+      const children = Array.from(opts.children);
+      const mixed = shuffle(children);
+      opts.innerHTML = ''; mixed.forEach(el=>opts.appendChild(el));
+    });
+  }
+
+  // ---------- Language & Logo ----------
+  function setLang(code){ state.lang=code; $('#langPill').textContent = `Reo: ${code==='both'?'MI + EN':code.toUpperCase()}`; }
+  function handleLogo(fileInput){
+    const f = fileInput.files?.[0]; if(!f) return;
+    const reader = new FileReader();
+    reader.onload = ()=>{ state.logoData = reader.result; };
+    reader.readAsDataURL(f);
+  }
+
+  // ---------- Wire up ----------
+  document.addEventListener('DOMContentLoaded', ()=>{
+    buildUI();
+    // Controls
+    document.getElementById('randomise').addEventListener('click', randomiseOptions);
+    document.getElementById('mark').addEventListener('click', markAll);
+    document.getElementById('pdf').addEventListener('click', generatePDF);
+    document.getElementById('logo').addEventListener('change', function(){ handleLogo(this); });
+    // Language buttons at bottom
+    document.querySelectorAll('[data-lang]').forEach(btn=>btn.addEventListener('click',()=>setLang(btn.dataset.lang)));
+  });
+  </script>
+</body>
+</html>
