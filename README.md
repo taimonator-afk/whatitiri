@@ -1,10 +1,10 @@
-# Tūwhiri – Te Taura Whakamātau Reanga 1–3  
+# Whatitiri – Te Taura Whakamātau Reanga 4  
 ### Part of the *Te Reo Makitaunu (TRM)* Programme
 
 ---
 
 ## 🌿 Overview
-**Tūwhiri** is an interactive bilingual (Te Reo Māori + English) assessment tool created for the *Te Reo Makitaunu (TRM)* language learning framework.  
+**Whatitiri** is an interactive bilingual (Te Reo Māori + English) assessment tool created for the *Te Reo Makitaunu (TRM)* language learning framework.  
 It enables learners to complete structured assessments, receive automatic scoring, and download personalised PDF reports.  
 
 This version is optimised for use within **Systeme.io** and other approved TRM learning platforms.
