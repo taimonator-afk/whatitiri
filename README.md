@@ -16,7 +16,7 @@ This version is optimised for use within **Systeme.io** and other approved TRM l
 - 🔀 Randomised multiple-choice questions  
 - 📄 Auto-generated PDF reports (landscape format)  
 - 🖼 TRM-branded layout with logo and copyright  
-- 🧠 Aligned to TRM *Reanga 1–3* curriculum standards  
+- 🧠 Aligned to TRM *Reanga* curriculum standards  
 - 🔒 Protected by TRM proprietary licensing  
 
 ---
